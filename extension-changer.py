@@ -19,34 +19,46 @@ def renameFile(folder, oldExt, newExt):
                 oldFilePath = os.path.join(folder, file)
                 newFilePath = os.path.join(
                     folder, file.replace(oldExt, newExt))
-                # newFilePath = os.path.join(folder, file[len(prefix):])
-
-                #print('oldFilePath %s' % (oldFilePath))
-                #print('newFilePath %s' % (newFilePath))
-
-                print('Renaming %s to %s' % (
-                    oldFilePath, newFilePath))
-                shutil.move(oldFilePath, newFilePath)
+                print('folder: %s' % (folder))
+                print('file: %s' % (file))
+                # print('Renaming %s to %s' % (
+                #   oldFilePath, newFilePath))
+                # shutil.move(oldFilePath, newFilePath)
     print('File rename complete')
 
 
-def folderValidation():
-    print('Checking folder entry')
+def folderValidation(folder):
+    if not folder.startswith('/'):
+        folder = '/' + folder
+
+    if not folder.endswith('/'):
+        folder = folder + '/'
+
+    return folder
 
 
-def extValidaiton():
-    print('Checking extension entries')
+def extValidaiton(extension):
+    if not extension.startswith('.'):
+        extension = '.' + extension
+
+    return extension
 
 
-print("""
-----------------------------
-Rename Files in Folder
-----------------------------""")
+print("Bulk Extension Changer\n")
 print("Enter folder location:")
-folder = str(input())
+while folder == "":
+    folder = str(input())
+
 print("Enter enter old extension:")
-oldExt = str(input())
+while oldExt == "":
+    oldExt = str(input())
+
 print("Enter next extension:")
-newExt = str(input())
+while newExt == "":
+    newExt = str(input())
+
+folder = folderValidation(folder)
+oldExt = extValidaiton(oldExt)
+newExt = extValidaiton(newExt)
 
 renameFile(folder, oldExt, newExt)
