@@ -30,6 +30,14 @@ def renameFile(folder, oldExt, newExt):
     print('File rename complete')
 
 
+def folderValidation():
+    print('Checking folder entry')
+
+
+def extValidaiton():
+    print('Checking extension entries')
+
+
 print("""
 ----------------------------
 Rename Files in Folder
