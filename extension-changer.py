@@ -7,8 +7,7 @@ newExt = ""
 
 
 def renameFile(folder, oldExt, newExt):
-    print('Renaming files')
-
+    print('Changing file extension')
     # walks through folder using os.walk(folder)
     for foldername, subfolders, filenames in os.walk(folder):
         print('Scanning ' + folder)
@@ -19,12 +18,10 @@ def renameFile(folder, oldExt, newExt):
                 oldFilePath = os.path.join(folder, file)
                 newFilePath = os.path.join(
                     folder, file.replace(oldExt, newExt))
-                print('folder: %s' % (folder))
-                print('file: %s' % (file))
-                # print('Renaming %s to %s' % (
-                #   oldFilePath, newFilePath))
-                # shutil.move(oldFilePath, newFilePath)
-    print('File rename complete')
+                print('Changing file extension from %s to %s' % (
+                    oldFilePath, newFilePath))
+                shutil.move(oldFilePath, newFilePath)
+    print('File extension change complete')
 
 
 def folderValidation(folder):
